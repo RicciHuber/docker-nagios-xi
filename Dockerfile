@@ -8,7 +8,7 @@ RUN mkdir /tmp/nagiosxi \
     | tar xz -C /tmp
 WORKDIR /tmp/nagiosxi
 
-# overwrite custom config file
+# overwrite custom config files
 ADD config.cfg xi-sys.cfg
 
 # start building
