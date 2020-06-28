@@ -3,7 +3,7 @@ FROM centos:7
 # get stuff from the interwebs
 RUN yum -y install wget tar; yum clean all
 RUN mkdir /tmp/nagiosxi \
-    && wget -qO- https://assets.nagios.com/downloads/nagiosxi/5/xi-5.6.14.tar.gz \
+    && wget -qO- https://assets.nagios.com/downloads/nagiosxi/xi-latest.tar.gz \
     | tar xz -C /tmp
 WORKDIR /tmp/nagiosxi
 
@@ -11,7 +11,7 @@ WORKDIR /tmp/nagiosxi
 ADD config.cfg xi-sys.cfg
 
 # start building
-RUN fullinstall
+RUN ./fullinstall
 
 # set startup script
 ADD start.sh /start.sh
