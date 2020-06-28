@@ -1,70 +1,17 @@
 FROM centos:6 
 
-ENV container docker
-MAINTAINER The CentOS Project <cloud-ops@centos.org>
-
 # get stuff from the interwebs
 RUN yum -y install wget tar; yum clean all
 RUN mkdir /tmp/nagiosxi \
-    && wget -qO- https://assets.nagios.com/downloads/nagiosxi/5/xi-5.6.14.tar.gz \
+    && wget -qO- https://assets.nagios.com/downloads/nagiosxi/xi-latest.tar.gz \
     | tar xz -C /tmp
 WORKDIR /tmp/nagiosxi
 
 # overwrite custom config files
-ADD config.cfg xi-sys.cfg
+#ADD config.cfg xi-sys.cfg
 
 # start building
-RUN ./init.sh \
-    && . ./xi-sys.cfg \
-	&& umask 0022 \
-	&& . ./functions.sh \
-	&& log="install.log"
-RUN export INTERACTIVE="False" \
-    && export INSTALL_PATH=`pwd`
-RUN . ./functions.sh \
-    && run_sub ./0-repos noupdate
-RUN . ./functions.sh \
-    && run_sub ./1-prereqs
-RUN . ./functions.sh \
-    && run_sub ./2-usersgroups
-RUN . ./functions.sh \
-    && run_sub ./3-dbservers
-RUN . ./functions.sh \
-    && run_sub ./4-services
-RUN . ./functions.sh \
-    && run_sub ./5-sudoers
-RUN sed -i.bak s/selinux/sudoers/g 9-dbbackups
-RUN . ./functions.sh \
-    && run_sub ./9-dbbackups
-RUN . ./functions.sh \
-    && run_sub ./11-sourceguardian
-RUN . ./functions.sh \
-    && run_sub ./13-phpini
-
-ADD scripts/NDOUTILS-POST subcomponents/ndoutils/post-install
-ADD scripts/install subcomponents/ndoutils/install
-RUN chmod 755 subcomponents/ndoutils/post-install \
-    && chmod 755 subcomponents/ndoutils/install \
-	&& . ./functions.sh \
-	&& run_sub ./A-subcomponents \
-	&& run_sub ./A0-mrtg
-
-RUN service mariadb start \
-    && . ./functions.sh \
-	&& run_sub ./B-installxi
-RUN . ./functions.sh \
-    && run_sub ./C-cronjobs
-RUN . ./functions.sh \
-    && run_sub ./D-chkconfigalldaemons
-RUN service mariadb start \
-    && . ./functions.sh \
-	&& run_sub ./E-importnagiosql
-RUN . ./functions.sh \
-    && run_sub ./F-startdaemons
-RUN . ./functions.sh \
-    && run_sub ./Z-webroot
-
-RUN yum clean all
+RUN ./fullinstall --non-interactive
 
 # set startup script
 ADD start.sh /start.sh
