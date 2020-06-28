@@ -49,14 +49,14 @@ RUN chmod 755 subcomponents/ndoutils/post-install \
 	&& run_sub ./A-subcomponents \
 	&& run_sub ./A0-mrtg
 
-RUN service mysqld start \
+RUN service mariadb start \
     && . ./functions.sh \
 	&& run_sub ./B-installxi
 RUN . ./functions.sh \
     && run_sub ./C-cronjobs
 RUN . ./functions.sh \
     && run_sub ./D-chkconfigalldaemons
-RUN service mysqld start \
+RUN service mariadb start \
     && . ./functions.sh \
 	&& run_sub ./E-importnagiosql
 RUN . ./functions.sh \
