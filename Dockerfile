@@ -14,7 +14,6 @@ WORKDIR /tmp/nagiosxi
 RUN touch installed.firewall
 
 RUN ./fullinstall --non-interactive
-RUN /usr/local/nagiosxi/scripts/repair_databases.sh
 
 # set startup script
 ADD start.sh /start.sh
