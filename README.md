@@ -1,7 +1,6 @@
 # Docker container for Nagios XI
 
-At the moment this is a quick and dirty built, but it works.
-It is based on the fullinstall-script provided by the NagiosXI team, so as long as they don 't change to much stuff, it will keep working.
+Installs the latest version of Nagios XI on a Centos 6 system. It use the fullinstall-script provided by the NagiosXI team, so as long as they don 't change to much stuff, it will keep working. The firewall configuration is skipped because of problems with updating firewall rules.
 
 You can start the container with the command:
 
