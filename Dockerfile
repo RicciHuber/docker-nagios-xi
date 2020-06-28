@@ -1,4 +1,5 @@
-FROM centos/systemd 
+FROM centos:6 
+MAINTAINER cbpeckles
 
 # get stuff from the interwebs
 RUN yum -y install wget tar; yum clean all
@@ -10,7 +11,7 @@ WORKDIR /tmp/nagiosxi
 # overwrite custom config files
 ADD config.cfg xi-sys.cfg
 
- start building
+# start building
 RUN ./init.sh \
     && . ./xi-sys.cfg \
 	&& umask 0022 \
@@ -62,12 +63,6 @@ RUN . ./functions.sh \
     && run_sub ./Z-webroot
 
 RUN yum clean all
-
-# set startup script
-ADD start.sh /start.sh
-RUN chmod 755 /start.sh
-EXPOSE 80 5666 5667
-
 
 # set startup script
 ADD start.sh /start.sh
