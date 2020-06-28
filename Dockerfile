@@ -11,7 +11,11 @@ WORKDIR /tmp/nagiosxi
 #ADD config.cfg xi-sys.cfg
 
 # start building
+
+# The following will skip the step of modifying the firewall/iptables.
+# because there are problems with Centos 6 
 RUN touch installed.firewall
+
 RUN ./fullinstall --non-interactive
 
 # set startup script
