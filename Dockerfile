@@ -1,5 +1,7 @@
 FROM centos:7 
-MAINTAINER cbpeckles
+
+ENV container docker
+MAINTAINER The CentOS Project <cloud-ops@centos.org>
 
 # get stuff from the interwebs
 RUN yum -y install wget tar; yum clean all
