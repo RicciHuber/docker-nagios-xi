@@ -1,5 +1,4 @@
-FROM centos:6 
-MAINTAINER cbpeckles
+FROM centos:7 
 
 # get stuff from the interwebs
 RUN yum -y install wget tar; yum clean all
