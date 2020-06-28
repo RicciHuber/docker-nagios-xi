@@ -13,7 +13,7 @@ WORKDIR /tmp/nagiosxi
 # because there are problems with Centos 6 
 RUN touch installed.firewall
 
-RUN ./fullinstall --non-interactive
+RUN ./fullinstall --non-interactive --mysql-password=nagiosxi
 
 # set startup script
 ADD start.sh /start.sh
