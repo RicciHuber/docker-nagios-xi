@@ -5,19 +5,8 @@
 
 /sbin/service mariadb start
 /sbin/service httpd start
-/sbin/service ajaxterm start
 /sbin/service crond start
-/sbin/service xinetd start
-/sbin/service ndo2db start
-/sbin/service npcd start
 /sbin/service nagios start
-/sbin/service rsyslog start
-
-#repair database to ensure consistency
-
-/usr/local/nagiosxi/scripts/repair_databases.sh
-
-/sbin/service crond restart
 
 # welcome everyone
 
