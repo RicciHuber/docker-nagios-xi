@@ -3,7 +3,7 @@
 
 # starting services
 
-/sbin/service mysqld start
+/sbin/service mariadb start
 /sbin/service httpd start
 /sbin/service ajaxterm start
 /sbin/service crond start
