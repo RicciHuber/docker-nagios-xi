@@ -6,6 +6,7 @@
 /sbin/service mariadb start
 /sbin/service httpd start
 /sbin/service crond start
+/sbin/service firewalld start
 /sbin/service nagios start
 
 # welcome everyone
