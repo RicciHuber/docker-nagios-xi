@@ -11,7 +11,7 @@ WORKDIR /tmp/nagiosxi
 ADD config.cfg xi-sys.cfg
 
 # start building
-RUN ./fullinstall --non-interactive --mysql-password nagiosxi
+RUN ./fullinstall --non-interactive
 
 # set startup script
 ADD start.sh /start.sh
