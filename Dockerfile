@@ -1,4 +1,4 @@
-FROM centos:7 
+FROM centos:6 
 
 ENV container docker
 MAINTAINER The CentOS Project <cloud-ops@centos.org>
