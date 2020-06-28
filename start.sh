@@ -9,6 +9,9 @@
 /sbin/service firewalld start
 /sbin/service nagios start
 
+#Repair Database
+/usr/local/nagiosxi/scripts/repair_databases.sh
+
 # welcome everyone
 
 cat <<-EOF
