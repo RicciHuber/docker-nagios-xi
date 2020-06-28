@@ -11,6 +11,7 @@ WORKDIR /tmp/nagiosxi
 ADD config.cfg xi-sys.cfg
 
 # start building
+RUN ls -al
 RUN ./fullinstall
 
 # set startup script
