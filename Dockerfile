@@ -7,9 +7,6 @@ RUN mkdir /tmp/nagiosxi \
     | tar xz -C /tmp
 WORKDIR /tmp/nagiosxi
 
-# overwrite custom config files
-#ADD config.cfg xi-sys.cfg
-
 # start building
 
 # The following will skip the step of modifying the firewall/iptables.
