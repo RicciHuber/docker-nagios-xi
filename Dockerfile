@@ -1,4 +1,4 @@
-FROM centos/systemd
+FROM centos:6
 
 # get stuff from the interwebs
 RUN yum -y install wget tar; yum clean all
